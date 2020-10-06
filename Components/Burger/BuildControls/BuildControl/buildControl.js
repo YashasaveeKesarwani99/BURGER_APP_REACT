@@ -1,6 +1,6 @@
 import React from "react";
-
-export const buildControl = (props) => {
+import "./buildControl.css";
+const buildControl = (props) => {
   return (
     <div className="BuildControl">
       <div className="Label">{props.label}</div>
@@ -9,3 +9,4 @@ export const buildControl = (props) => {
     </div>
   );
 };
+export default buildControl;
