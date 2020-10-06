@@ -3,3 +3,4 @@ Created with CodeSandbox
 
 # JAVASRCIPT PROPERTIES USED
 1. reduce(-,-,[]) - the reduce property takes three arguements, first one is the original array and second one contiains the current properties and an empty array.
+2. ObjectName[args] - the args passed in the square brackets is actually one of the keys inside the object, the whole expression returns the value of the key passed.
