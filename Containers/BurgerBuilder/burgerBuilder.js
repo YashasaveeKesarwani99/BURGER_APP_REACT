@@ -12,6 +12,7 @@ const INGREDIENT_PRICE = {
 class BurgerBuilder extends React.Component {
   constructor(props) {
     super(props);
+    this.removeIngredientHandler = this.removeIngredientHandler.bind(this);
     this.addIngredientHandler = this.addIngredientHandler.bind(this);
     this.state = {
       ingredients: {
@@ -40,11 +41,30 @@ class BurgerBuilder extends React.Component {
     });
   }
 
+  removeIngredientHandler(type) {
+    //updating the amount of ingredients in burger
+    const oldCount = this.state.ingredients[type];
+    const updatedCount = oldCount - 1;
+    const updatedIngredients = { ...this.state.ingredients };
+    updatedIngredients[type] = updatedCount;
+
+    //updating price
+    const updatedPrice = this.state.totalPrice - INGREDIENT_PRICE[type];
+    //updating states
+    this.setState({
+      ingredients: updatedIngredients,
+      totalPrice: updatedPrice
+    });
+  }
+
   render() {
     return (
       <div>
         <Burger ingredients={this.state.ingredients} />
-        <BuildControls add={this.addIngredientHandler} />
+        <BuildControls
+          add={this.addIngredientHandler}
+          remove={this.removeIngredientHandler}
+        />
       </div>
     );
   }
