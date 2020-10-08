@@ -13,6 +13,7 @@ const controls = [
 const buildControls = (props) => {
   return (
     <div className="BuildControls">
+      {props.price > 10 ? <p> Price : {props.price}</p> : null}
       {controls.map((obj) => {
         return (
           <BuildControl
@@ -20,9 +21,14 @@ const buildControls = (props) => {
             key={obj.label}
             adder={() => props.add(obj.type)}
             remover={() => props.remove(obj.type)}
+            disabled={props.disabled[obj.type]}
+            purchasable={props.purchasable}
           />
         );
       })}
+      {props.purchasable ? (
+        <button className="OrderButton">Order Now</button>
+      ) : null}
     </div>
   );
 };
