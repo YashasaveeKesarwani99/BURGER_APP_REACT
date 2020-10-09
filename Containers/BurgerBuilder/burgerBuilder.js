@@ -14,6 +14,7 @@ const INGREDIENT_PRICE = {
 class BurgerBuilder extends React.Component {
   constructor(props) {
     super(props);
+    this.updatePurchasing = this.updatePurchasing.bind(this);
     this.removeIngredientHandler = this.removeIngredientHandler.bind(this);
     this.addIngredientHandler = this.addIngredientHandler.bind(this);
     this.updatePurchasable = this.updatePurchasable.bind(this);
@@ -25,7 +26,8 @@ class BurgerBuilder extends React.Component {
         meat: 0
       },
       totalPrice: 10,
-      purchasable: false
+      purchasable: false,
+      purchasing: false
     };
   }
   // Updating the state of purchase
@@ -81,6 +83,10 @@ class BurgerBuilder extends React.Component {
     }
   }
 
+  updatePurchasing() {
+    this.setState({ purchasing: true });
+  }
+
   render() {
     //condtional rendering of "LESS" button
     var disabledInfo = { ...this.state.ingredients };
@@ -89,7 +95,7 @@ class BurgerBuilder extends React.Component {
     }
     return (
       <div>
-        <Modal>
+        <Modal show={this.state.purchasing}>
           <OrderSummary ingredients={this.state.ingredients} />
         </Modal>
         <Burger ingredients={this.state.ingredients} />
@@ -99,6 +105,7 @@ class BurgerBuilder extends React.Component {
           disabled={disabledInfo}
           price={this.state.totalPrice}
           purchasable={this.state.purchasable}
+          purchasing={this.updatePurchasing}
         />
       </div>
     );

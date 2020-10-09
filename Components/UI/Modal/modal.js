@@ -6,7 +6,7 @@ const Modal = (props) => {
       className="Modal"
       style={{
         transform: props.show ? "translateY(0)" : "trandslateY(-100vh)",
-        opacity: props ? "1" : "0"
+        opacity: props.show ? "1" : "0"
       }}
     >
       {props.children}

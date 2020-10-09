@@ -27,7 +27,9 @@ const buildControls = (props) => {
         );
       })}
       {props.purchasable ? (
-        <button className="OrderButton">Order Now</button>
+        <button className="OrderButton" onClick={props.purchasing}>
+          Order Now
+        </button>
       ) : null}
     </div>
   );
